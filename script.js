@@ -1,17 +1,11 @@
-
 document.getElementsByClassName("button")[0].addEventListener("click", () => {
   let input_value = document.getElementsByClassName("inputbox")[0].value;
   loadings(input_value);
 });
 function loadings(value) {
   function domain() {
-    return new Promise((resolve, reject) => {
-      console.log(input_value);
       let url = `https://api.edamam.com/search?q=${value}&app_id=b44cf4e2&app_key=1b4d48a5d8b6a9fb556f2170d272b78c&from=0&to=3&calories=591-722&health=alcohol-free`;
-      fetch(url).then((data) => resolve(data)).catch((err) => reject(err));
-    });
-  }
-  domain()
+      fetch(url)
     .then((data) => data.json())
     .then((data1) => {
       console.log(data1);
@@ -77,10 +71,12 @@ function loadings(value) {
       }
     })
     .catch((err) => console.log(err));
+  }
+  domain()
 }
+
 let input_value = document.getElementsByClassName("inputbox")[0].value;
 
 loadings(input_value);
-
 
 
